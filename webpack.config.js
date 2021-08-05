@@ -1,5 +1,5 @@
 const path = require('path')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -41,9 +41,10 @@ module.exports = {
       '@core': path.resolve(__dirname, 'src/core'),
     },
   },
+  target: 'web',
   devtool: isDev ? 'source-map' : false,
   devServer: {
-    port: 3000,
+    port: 8080,
     hot: isDev,
   },
   plugins: [
@@ -74,10 +75,6 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true,
-            },
           },
           'css-loader',
           'sass-loader',
